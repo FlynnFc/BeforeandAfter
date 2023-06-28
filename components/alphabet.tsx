@@ -20,7 +20,7 @@ const Alphabet = (props: { boundry: { before: string; after: string } }) => {
                 key={el}
                 className={`letterBox text-white text-base md:text-lg px-3 md:px-4 ${
                   el < props.boundry.after[0] || el > props.boundry.before[0]
-                    ? "bg-[#272729]"
+                    ? "bg-white/10"
                     : "bg-[#818384]"
                 }`}
               >

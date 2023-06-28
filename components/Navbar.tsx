@@ -6,7 +6,7 @@ const lora = Lora({ subsets: ["latin"], display: "swap" });
 const Navbar = () => {
   return (
     <div
-      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 md:w-6/12 bg-glassbg/40 ${lora.className}`}
+      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 md:w-6/12 bg-white/10 ${lora.className}`}
     >
       <div className="navbar-start">
         <div className="dropdown">
@@ -40,9 +40,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn-ghost btn normal-case text-3xl font-bold">
-          Word of the day
-        </a>
+        <Link href={"/"}>
+          <button className="btn-ghost btn normal-case text-3xl font-bold">
+            Word of the day
+          </button>
+        </Link>
       </div>
       <div className="navbar-end">
         <Link href={"/rules"}>

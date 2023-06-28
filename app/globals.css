@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 .letterBox {
   display: inline-flex;
   flex-shrink: 0;
@@ -48,12 +35,6 @@
   outline-color: hsl(var(--bc) / 1);
 }
 
-.background {
-  width: 100%;
-  height: 100%;
-  background-size: 128px;
-  background-repeat: repeat;
-  background-image: url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png");
-  opacity: 0.5;
-  border-radius: 0;
+html {
+  background-color: #0a0a0d !important;
 }

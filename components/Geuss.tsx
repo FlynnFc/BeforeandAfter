@@ -4,6 +4,7 @@ import { isValid, random } from "5letterwords";
 import React, { useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 import Alphabet from "./alphabet";
+import Layerbet from "./layerbet";
 
 const Geuss = () => {
   const [before, setBefore] = useState("");
@@ -89,8 +90,6 @@ const Geuss = () => {
     setGuess("");
   };
 
-  console.log(modalWord);
-
   return (
     <div className="flex flex-col gap-2 p-4">
       {modalWord && (
@@ -160,7 +159,8 @@ const Geuss = () => {
         </h4>
         {debug && <span> {`word=${word}`}</span>}
       </div>
-      <Alphabet boundry={{ before, after }} />
+      {/* <Alphabet boundry={{ before, after }} /> */}
+      <Layerbet boundry={{ before, after }} />
     </div>
   );
 };
