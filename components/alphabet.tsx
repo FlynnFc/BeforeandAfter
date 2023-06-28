@@ -11,7 +11,6 @@ const Alphabet = (props: { boundry: { before: string; after: string } }) => {
     <>
       <h2 className="text-center font-bold text-xl pt-2 border-primary">
         Available start letters
-            key={el}
       </h2>{" "}
       <div className="flex flex-wrap justify-center text-2xl max-w-[25rem] gap-[8px]">
         {rows.map((els, idx) => (
