@@ -1,22 +1,20 @@
 "use client";
 
+import { isValid, random } from "5letterwords";
 import React, { useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 
-const Geuss = (props: { generatedWord: string }) => {
+const Geuss = () => {
   const [before, setBefore] = useState("");
   const [after, setAfter] = useState("");
   const [playerguess, setGuess] = useState("");
-  const [regenWord, setRegenword] = useState(false);
-  const word = useMemo(() => props.generatedWord, [props.generatedWord]);
+  const [word, setWord] = useState(random());
   const validWord = (guess: string) => {
-    //If word is not in list list
-    if (guess.length === 5) {
+    if (isValid(guess)) {
       return true;
-    } else {
-      toast.error("Thats not a recognised word");
-      return false;
     }
+    toast.error("Thats not a recognised word");
+    return false;
   };
 
   const currentStringColide = (
@@ -66,7 +64,9 @@ const Geuss = (props: { generatedWord: string }) => {
     const temp = playerguess.toLowerCase();
     if (temp === word) {
       toast.success("THATS THE WORD YIPEE");
-      setRegenword((prev) => !prev);
+      setWord(random());
+      setAfter("");
+      setBefore("");
     }
     e.preventDefault();
     console.log("testing");
@@ -93,6 +93,10 @@ const Geuss = (props: { generatedWord: string }) => {
         This word comes Before:{" "}
         <span className="text-xl font-bold text-white">{before}</span>
       </p>
+      <div className="fixed bottom-0 right-0">
+        <h4>Debug:</h4>
+        <span> {`word=${word}`}</span>
+      </div>
     </div>
   );
 };
