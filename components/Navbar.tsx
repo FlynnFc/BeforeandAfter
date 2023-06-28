@@ -5,7 +5,7 @@ const lora = Lora({ subsets: ["latin"], display: "swap" });
 const Navbar = () => {
   return (
     <div
-      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 w-11/12 bg-glassbg/40 ${lora.className}`}
+      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 md:w-6/12 bg-glassbg/40 ${lora.className}`}
     >
       <div className="navbar-start">
         <div className="dropdown">
