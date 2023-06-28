@@ -1,13 +1,13 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Lora } from "next/font/google";
+
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
-const lora = Lora({ subsets: ["latin"], display: "swap" });
+
 
 export const metadata = {
   title: "Before or After",
