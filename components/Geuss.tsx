@@ -25,7 +25,7 @@ const Geuss = () => {
 
   const errorWiggle = () => {
     setInputBorder("input-error");
-    setTimeout(() => setInputBorder("input-primary"), 500);
+    setTimeout(() => setInputBorder("input-primary"), 800);
   };
   const currentStringColide = (
     currentGeuss: string,
