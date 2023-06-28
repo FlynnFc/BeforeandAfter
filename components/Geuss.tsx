@@ -9,6 +9,7 @@ const Geuss = () => {
   const [after, setAfter] = useState("");
   const [playerguess, setGuess] = useState("");
   const [word, setWord] = useState(random());
+  const [debug, setDebug] = useState(false);
   const validWord = (guess: string) => {
     if (isValid(guess)) {
       return true;
@@ -93,9 +94,18 @@ const Geuss = () => {
         This word comes Before:{" "}
         <span className="text-xl font-bold text-white">{before}</span>
       </p>
-      <div className="fixed bottom-0 right-0">
-        <h4>Debug:</h4>
-        <span> {`word=${word}`}</span>
+      <div className="fixed bottom-0 right-0 flex flex-col m-2">
+        <h4 className="flex items-center gap-2">
+          Debug:{" "}
+          <input
+            onChange={(e) => setDebug(e.target.checked)}
+            className="checkbox checkbox-sm"
+            type="checkbox"
+            name=""
+            id=""
+          />
+        </h4>
+        {debug && <span> {`word=${word}`}</span>}
       </div>
     </div>
   );
