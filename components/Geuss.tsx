@@ -3,6 +3,7 @@
 import { isValid, random } from "5letterwords";
 import React, { useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
+import Alphabet from "./alphabet";
 
 const Geuss = () => {
   const [before, setBefore] = useState("");
@@ -10,6 +11,10 @@ const Geuss = () => {
   const [playerguess, setGuess] = useState("");
   const [word, setWord] = useState(random());
   const [debug, setDebug] = useState(false);
+  const [inputBorder, setInputBorder] = useState<
+    "input-primary" | "input-error"
+  >("input-primary");
+
   const validWord = (guess: string) => {
     if (isValid(guess)) {
       return true;
@@ -18,6 +23,10 @@ const Geuss = () => {
     return false;
   };
 
+  const errorWiggle = () => {
+    setInputBorder("input-error");
+    setTimeout(() => setInputBorder("input-primary"), 500);
+  };
   const currentStringColide = (
     currentGeuss: string,
     comparer: "after" | "before"
@@ -28,6 +37,7 @@ const Geuss = () => {
           if (currentGeuss > prev) return currentGeuss;
           else {
             toast.error(`${prev} is already a better guess`);
+            errorWiggle();
             return prev;
           }
         });
@@ -37,6 +47,7 @@ const Geuss = () => {
           if (currentGeuss < prev) return currentGeuss;
           else {
             toast.error(`${prev} is already a better guess`);
+            errorWiggle();
             return prev;
           }
         });
@@ -87,7 +98,7 @@ const Geuss = () => {
           type="text"
           value={playerguess}
           onChange={(e) => setGuess(e.target.value)}
-          className="input input-lg input-bordered input-primary text-xl w-[30rem]"
+          className={`input input-lg ${inputBorder}  text-xl w-[23rem]`}
         />
       </form>
       <p className="text-base items-start justify-start gap-1">
@@ -107,6 +118,7 @@ const Geuss = () => {
         </h4>
         {debug && <span> {`word=${word}`}</span>}
       </div>
+      <Alphabet boundry={{ before, after }} />
     </div>
   );
 };
