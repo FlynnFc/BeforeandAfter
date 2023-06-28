@@ -1,11 +1,14 @@
 import Geuss from "@/components/Geuss";
-import React from "react";
-import { generate, count } from "random-words";
+import React, { useMemo } from "react";
+
+import { random } from "5letterwords";
 
 const page = () => {
+  console.log(random());
   return (
     <div>
-      <Geuss />
+      <p>Poop</p>
+      <Geuss generatedWord={"test"} />
     </div>
   );
 };

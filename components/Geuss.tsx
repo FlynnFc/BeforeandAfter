@@ -2,18 +2,13 @@
 
 import React, { useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
-import { generate, count } from "random-words";
 
-const Geuss = () => {
+const Geuss = (props: { generatedWord: string }) => {
   const [before, setBefore] = useState("");
   const [after, setAfter] = useState("");
   const [playerguess, setGuess] = useState("");
   const [regenWord, setRegenword] = useState(false);
-  const word = useMemo(() => {
-    const temp = generate({ minLength: 5, maxLength: 5 }) as unknown as string;
-    return temp;
-  }, [regenWord]);
-
+  const word = useMemo(() => props.generatedWord, [props.generatedWord]);
   const validWord = (guess: string) => {
     //If word is not in list list
     if (guess.length === 5) {
