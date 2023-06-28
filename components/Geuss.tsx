@@ -98,7 +98,7 @@ const Geuss = () => {
           type="text"
           value={playerguess}
           onChange={(e) => setGuess(e.target.value)}
-          className={`input input-lg ${inputBorder}  text-xl w-[23rem]`}
+          className={`input h-16 ${inputBorder}  text-3xl md:w-[23rem] animate-pulse bg-glassbg focus:animate-none`}
         />
       </form>
       <p className="text-base items-start justify-start gap-1">

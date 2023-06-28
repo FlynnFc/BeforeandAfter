@@ -10,6 +10,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        glassbg: "rgba(28, 22, 47, .4)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

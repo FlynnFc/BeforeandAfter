@@ -1,8 +1,12 @@
 import React from "react";
+import { Lora } from "next/font/google";
 
+const lora = Lora({ subsets: ["latin"], display: "swap" });
 const Navbar = () => {
   return (
-    <div className="navbar bg-neutral">
+    <div
+      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 w-11/12 bg-glassbg/40 ${lora.className}`}
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -35,7 +39,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn-ghost btn normal-case text-xl">Word of the day</a>
+        <a className="btn-ghost btn normal-case text-3xl font-bold">
+          Word of the day
+        </a>
       </div>
       <div className="navbar-end"></div>
     </div>

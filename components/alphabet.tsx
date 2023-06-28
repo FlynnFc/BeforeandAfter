@@ -12,13 +12,13 @@ const Alphabet = (props: { boundry: { before: string; after: string } }) => {
       <h2 className="text-center font-bold text-xl pt-2 border-primary">
         Available start letters
       </h2>{" "}
-      <div className="flex flex-wrap justify-center text-2xl max-w-[25rem] gap-[8px]">
+      <div className="flex flex-wrap justify-center w-auto  max-w-[25rem] gap-[8px]">
         {rows.map((els, idx) => (
           <ul className="gap-[8px] flex flex-row" key={idx}>
             {els.map((el) => (
               <li
                 key={el}
-                className={`letterBox text-white ${
+                className={`letterBox text-white text-base md:text-lg px-3 md:px-4 ${
                   el < props.boundry.after[0] || el > props.boundry.before[0]
                     ? "bg-[#272729]"
                     : "bg-[#818384]"

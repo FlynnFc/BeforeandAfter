@@ -32,13 +32,9 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 0.3rem;
   height: 3rem /* 48px */;
-  padding-left: 1rem /* 16px */;
-  padding-right: 1rem /* 16px */;
-  font-size: 0.875rem /* 14px */;
   line-height: 1.25rem /* 20px */;
   line-height: 1em;
   min-height: 4rem /* 48px */;
-  font-size: 1.25rem;
   max-width: 2.5rem;
   height: 55px;
   gap: 0.5rem /* 8px */;
@@ -50,4 +46,14 @@
   --tw-border-opacity: 1;
   --tw-bg-opacity: 1;
   outline-color: hsl(var(--bc) / 1);
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-size: 128px;
+  background-repeat: repeat;
+  background-image: url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png");
+  opacity: 0.5;
+  border-radius: 0;
 }
