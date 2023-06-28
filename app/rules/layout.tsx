@@ -1,6 +1,7 @@
-import Navbar from "@/components/Navbar";
-import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import "../globals.css";
 import { Inter } from "next/font/google";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`min-h-screen h-full bg-[#0A0A0D] ${inter.className}`}>
-        {children}
+        <main className="flex flex-col items-center justify-center h-full w-full  gap-36 ">
+          <Navbar />
+          <Toaster position="bottom-center" />
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Lora } from "next/font/google";
+import Link from "next/link";
 
 const lora = Lora({ subsets: ["latin"], display: "swap" });
 const Navbar = () => {
@@ -43,7 +44,11 @@ const Navbar = () => {
           Word of the day
         </a>
       </div>
-      <div className="navbar-end"></div>
+      <div className="navbar-end">
+        <Link href={"/rules"}>
+          <button className="btn btn-ghost">Rules</button>
+        </Link>
+      </div>
     </div>
   );
 };

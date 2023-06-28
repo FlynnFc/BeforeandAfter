@@ -129,7 +129,7 @@ const Geuss = () => {
         </div>
       )}
       <h2>
-        Guesses <span>{numberOfGuesses}</span>
+        Guesses: <span>{numberOfGuesses}</span>
       </h2>
       <p className="text-base items-start justify-start gap-1">
         This word comes After:{" "}
@@ -141,7 +141,8 @@ const Geuss = () => {
           type="text"
           value={playerguess}
           onChange={(e) => setGuess(e.target.value)}
-          className={`input h-16 ${inputBorder}  text-3xl md:w-[23rem] animate-pulse bg-glassbg focus:animate-none`}
+          placeholder="Guess a 5 letter word"
+          className={`input h-16 ${inputBorder}  text-3xl w-full animate-pulse bg-transparent focus:animate-none`}
         />
       </form>
       <p className="text-base items-start justify-start gap-1">
@@ -155,8 +156,6 @@ const Geuss = () => {
             onChange={(e) => setDebug(e.target.checked)}
             className="checkbox checkbox-sm"
             type="checkbox"
-            name=""
-            id=""
           />
         </h4>
         {debug && <span> {`word=${word}`}</span>}
