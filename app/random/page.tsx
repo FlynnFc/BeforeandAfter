@@ -7,7 +7,7 @@ const page = () => {
 
   return (
     <div className="flex justify-center">
-      <Geuss generatedWord={word} />
+      <Geuss />
     </div>
   );
 };
