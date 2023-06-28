@@ -14,6 +14,13 @@ const Geuss = () => {
   const [inputBorder, setInputBorder] = useState<
     "input-primary" | "input-error"
   >("input-primary");
+  const [modalWord, setModalWord] = useState("");
+  const [numberOfGuesses, setNumberOfGuesses] = useState(0);
+
+  const successHandler = () => {
+    toast.success("THATS THE WORD YIPEE");
+    setModalWord(word);
+  };
 
   const validWord = (guess: string) => {
     if (isValid(guess)) {
@@ -55,11 +62,10 @@ const Geuss = () => {
     }
   };
 
-  console.log(word);
   const worderComparer = (geuss: string) => {
     //Breaks out of comparer if not a valid guess
     if (!validWord(geuss.toLowerCase())) return;
-
+    setNumberOfGuesses((prev) => prev + 1);
     //Checking alphabetical order of word
     if (geuss < word) {
       if (after) {
@@ -75,10 +81,7 @@ const Geuss = () => {
   const submitHandler = (e: { preventDefault: () => void }) => {
     const temp = playerguess.toLowerCase();
     if (temp === word) {
-      toast.success("THATS THE WORD YIPEE");
-      setWord(random());
-      setAfter("");
-      setBefore("");
+      successHandler();
     }
     e.preventDefault();
     console.log("testing");
@@ -86,8 +89,48 @@ const Geuss = () => {
     setGuess("");
   };
 
+  console.log(modalWord);
+
   return (
     <div className="flex flex-col gap-2 p-4">
+      {modalWord && (
+        <div className="top-0 fixed left-0 bg-black/50 h-screen z-50 flex-col w-screen flex justify-start items-center">
+          <section className="gap-4 rounded-btn shadow-lg flex flex-col max-w-xl mt-20 bg-base-content text-base-300 top-20 p-4">
+            <h2 className="text-3xl text-center">Thats right!</h2>
+            <h3>
+              The word was: <span className="font-bold">{modalWord}</span>
+            </h3>
+            <h3>
+              It took you <span className="font-bold">{numberOfGuesses}</span>{" "}
+              guesses
+            </h3>
+            <article>
+              <h4 className="text-lg font-semibold">Definition:</h4>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Aliquam earum totam vel excepturi rerum recusandae inventore
+                maiores, magnam dolorum? Aliquid, neque! Odio, minima ipsa illum
+                ut voluptatibus nisi exercitationem suscipit.
+              </p>
+            </article>
+            <button
+              onClick={() => {
+                setNumberOfGuesses(0);
+                setModalWord("");
+                setWord(random());
+                setAfter("");
+                setBefore("");
+              }}
+              className="btn"
+            >
+              Play again
+            </button>
+          </section>
+        </div>
+      )}
+      <h2>
+        Guesses <span>{numberOfGuesses}</span>
+      </h2>
       <p className="text-base items-start justify-start gap-1">
         This word comes After:{" "}
         <span className="text-xl font-bold text-white">{after}</span>
