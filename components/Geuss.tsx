@@ -1,7 +1,7 @@
 "use client";
 
 import { isValid, random } from "5letterwords";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 import Alphabet from "./alphabet";
 import Layerbet from "./layerbet";
@@ -17,9 +17,27 @@ const Geuss = () => {
   >("input-primary");
   const [modalWord, setModalWord] = useState("");
   const [numberOfGuesses, setNumberOfGuesses] = useState(0);
+  const [wordDef, setWordDef] = useState<string[]>();
+
+  const wordDefinition = async (word: string) => {
+    try {
+      console.log("trying");
+      const temp: any = await fetch(
+        `https://dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.DICTIONARY_KEY}`,
+        { method: "GET" }
+      );
+      const data = await temp.json();
+      const def = data[0].shortdef;
+      console.log(data);
+      setWordDef(def);
+    } catch (e) {
+      console.error("Error fetching definition", e);
+    }
+  };
 
   const successHandler = () => {
     toast.success("THATS THE WORD YIPEE");
+    wordDefinition(word);
     setModalWord(word);
   };
 
@@ -94,7 +112,7 @@ const Geuss = () => {
     <div className="flex flex-col gap-2 p-4">
       {modalWord && (
         <div className="top-0 fixed left-0 bg-black/50 h-screen z-50 flex-col w-screen flex justify-start items-center">
-          <section className="gap-4 rounded-btn shadow-lg flex flex-col max-w-xl mt-20 bg-base-content text-base-300 top-20 p-4">
+          <section className="gap-4 rounded-btn shadow-lg mx-4 flex flex-col max-w-xl mt-20 bg-base-content text-base-300 top-20 p-4">
             <h2 className="text-3xl text-center">Thats right!</h2>
             <h3>
               The word was: <span className="font-bold">{modalWord}</span>
@@ -105,12 +123,11 @@ const Geuss = () => {
             </h3>
             <article>
               <h4 className="text-lg font-semibold">Definition:</h4>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Aliquam earum totam vel excepturi rerum recusandae inventore
-                maiores, magnam dolorum? Aliquid, neque! Odio, minima ipsa illum
-                ut voluptatibus nisi exercitationem suscipit.
-              </p>
+              <ul className="flex flex-col gap-2">
+                {wordDef?.map((el, idx) => (
+                  <li key={idx}>- {el[0].toUpperCase() + el.slice(1)}</li>
+                ))}
+              </ul>
             </article>
             <button
               onClick={() => {
@@ -159,8 +176,7 @@ const Geuss = () => {
         </h4>
         {debug && <span> {`word=${word}`}</span>}
       </div>
-      {/* <Alphabet boundry={{ before, after }} /> */}
-      <Layerbet boundry={{ before, after }} />
+      <Layerbet playerguess={playerguess} boundry={{ before, after }} />
     </div>
   );
 };
