@@ -111,7 +111,7 @@ const Geuss = () => {
     <div className="flex flex-col gap-2 p-4">
       {modalWord && (
         <div className="top-0 fixed left-0 bg-black/50 h-screen z-50 flex-col w-screen flex justify-start items-center">
-          <section className="gap-4 rounded-btn shadow-lg mx-4 flex flex-col max-w-xl mt-20 bg-base-content text-base-300 top-20 p-4">
+          <section className="gap-4 rounded-btn shadow-lg mx-4 flex lg:[400px] flex-col  max-w-xl mt-20 bg-base-content text-base-300 top-20 p-4">
             <h2 className="text-3xl text-center">Thats right!</h2>
             <h3>
               The word was: <span className="font-bold">{modalWord}</span>
