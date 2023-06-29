@@ -20,12 +20,11 @@ const Geuss = () => {
   const [wordDef, setWordDef] = useState<string[]>();
 
   const wordDefinition = async (word: string) => {
+    const url = `https://dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.NEXT_PUBLIC_DICTIONARY_KEY}`;
+    console.log(url);
     try {
       console.log("trying");
-      const temp: any = await fetch(
-        `https://dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.DICTIONARY_KEY}`,
-        { method: "GET" }
-      );
+      const temp: any = await fetch(url, { method: "GET" });
       const data = await temp.json();
       const def = data[0].shortdef;
       console.log(data);
