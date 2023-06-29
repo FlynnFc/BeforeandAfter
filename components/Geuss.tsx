@@ -155,7 +155,16 @@ const Geuss = () => {
         <input
           type="text"
           value={playerguess}
-          onChange={(e) => setGuess(e.target.value)}
+          onChange={(e) => {
+            if (
+              playerguess.length < 5 ||
+              e.target.value.length < playerguess.length
+            ) {
+              setGuess(e.target.value);
+            } else {
+              errorWiggle();
+            }
+          }}
           placeholder="Guess a 5 letter word"
           className={`input h-16 ${inputBorder}  text-3xl w-full animate-pulse bg-transparent focus:animate-none`}
         />
