@@ -124,7 +124,7 @@ const Geuss = () => {
               <h4 className="text-lg font-semibold">Definition:</h4>
               <ul className="flex flex-col gap-2">
                 {wordDef?.map((el, idx) => (
-                  <li key={idx}>- {el[0].toUpperCase() + el.slice(1)}</li>
+                  <li key={idx}>{el[0].toUpperCase() + el.slice(1)}</li>
                 ))}
               </ul>
             </article>
