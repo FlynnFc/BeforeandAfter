@@ -18,11 +18,11 @@ const Layerbet = (props: {
     }
 
     if (props.boundry.after && !props.boundry.before) {
-      return selectedLetters + el < props.boundry.after;
+      return selectedLetters + el < props.boundry.after[0];
     }
 
     if (!props.boundry.after && props.boundry.before) {
-      return selectedLetters + el > props.boundry.before;
+      return selectedLetters + el > props.boundry.before[0];
     }
 
     return (
@@ -34,10 +34,10 @@ const Layerbet = (props: {
   };
   return (
     <div className="flex flex-col justify-center gap-4 items-center">
+      <h2>{`Possible next letters for ${
+        selectedLetters ? selectedLetters : "..."
+      }`}</h2>{" "}
       <div className="flex flex-wrap justify-center w-auto  max-w-xl gap-[8px]">
-        <h2>{`Possible next letters for ${
-          selectedLetters ? selectedLetters : "..."
-        }`}</h2>
         {rows.map((els, idx) => (
           <ul className="gap-[8px] flex flex-row" key={idx}>
             {els.map((el) => {
