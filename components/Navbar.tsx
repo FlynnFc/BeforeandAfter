@@ -1,12 +1,14 @@
 import React from "react";
 import { Lora } from "next/font/google";
+import { Roboto_Slab } from "next/font/google";
 import Link from "next/link";
 
+const robslab = Roboto_Slab({ subsets: ["latin"], display: "swap" });
 const lora = Lora({ subsets: ["latin"], display: "swap" });
 const Navbar = () => {
   return (
     <div
-      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 md:w-6/12 bg-white/10 ${lora.className}`}
+      className={`flex rounded-btn shadow-lg mt-4 navbar max-w-8/12 md:w-6/12 bg-white/10 ${robslab.className}`}
     >
       <div className="navbar-start">
         <div className="dropdown">

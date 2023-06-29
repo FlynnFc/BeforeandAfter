@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Before or After",
-  description: "Find my word",
+  title: "Rules",
+  description: "Explore the roles of before and after",
 };
 
 export default function RootLayout({

@@ -1,6 +1,9 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import { Roboto_Slab } from "next/font/google";
+
+const robslab = Roboto_Slab({ subsets: ["latin"], display: "swap" });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -8,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Rules",
-  description: "Explore the roles of before and after",
+  title: "A over B",
+  description: "Find my word",
 };
 
 export default function RootLayout({
